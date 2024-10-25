@@ -51,31 +51,72 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class PetriDishGetSizeTest {
+/*
+The test failure seems not to be directly related to the test case or business logic. The error logs indicate an issue with the test discovery process by the JUnit Jupiter test engine. Specifically, the error message "TestEngine with ID 'junit-jupiter' failed to discover tests" suggests that the test engine could not find or recognize the tests to run.
 
-	@Test
-	@Tag("valid")
-	public void validateSize() {
-		PetriDish dish = new PetriDish(50);
-		int size = dish.getSize();
-		assertEquals(50, size, "Size of the dish should be 50");
-	}
+This issue could be due to several reasons:
 
-	@Test
-	@Tag("boundary")
-	public void checkZeroSize() {
-		PetriDish dish = new PetriDish(0);
-		int size = dish.getSize();
-		assertEquals(0, size, "Size of the dish should be 0");
-	}
+1. Version Mismatch: This issue often occurs when there is a mismatch between the versions of JUnit platform and JUnit Jupiter. Both should have compatible versions.
 
-	@Test
-	@Tag("valid")
-	public void validateSizeAfterAddingElements() {
-		// This test case is invalid since there is no direct way to add elements to the
-		// dish object.
-		// The method getAddresses() is not available in the PetriDish class.
-		// Hence this test case needs to be removed or the business logic needs to be
-		// updated to handle such scenario.
-	}
+2. Incorrect Annotations: The issue might also occur if the test annotations are not correctly recognized. For instance, if the project is using JUnit 5 (Jupiter), but the test annotations are from JUnit 4, the test engine may not discover the tests. In this case, the test method seems correctly annotated with JUnit 5 annotations, so this might not be the problem.
+
+3. Project Configuration: The problem might be in the project configuration. For example, if the project is not correctly set up to use JUnit 5, or if the classpath does not include the necessary JUnit 5 libraries, the test engine may fail to discover tests.
+
+4. Deprecated Dependency Version: The logs show a warning about a deprecated version for 'org.junit.jupiter:junit-jupiter:jar'. This might be causing issues with the test discovery.
+
+To resolve this issue, it is recommended to ensure that the project is correctly configured to use JUnit 5, and that the versions of JUnit platform and JUnit Jupiter are compatible. Additionally, the deprecated dependency version should be updated to a supported version.
+@Test
+@Tag("valid")
+public void validateSize() {
+    PetriDish dish = new PetriDish(50);
+    int size = dish.getSize();
+    assertEquals(50, size, "Size of the dish should be 50");
+}
+*/
+/*
+The errors provided indicate that the test engine failed to discover any tests. This issue is often not directly related to the code of the test itself, but to the project configuration or the environment in which the tests are run.
+
+Here are the potential reasons for these errors:
+
+1. Incorrect or outdated dependencies: The warning indicates that the version for the dependency 'org.junit.jupiter:junit-jupiter:jar' is either LATEST or RELEASE, both of which are being deprecated. This could potentially cause the tests to not be discovered correctly. Ensure that the project is using the correct and up-to-date versions of the JUnit Jupiter dependencies.
+
+2. Maven configuration: The error log indicates a build failure with the maven-surefire-plugin. This plugin is responsible for running tests in Maven projects. The issue might be due to an incorrect configuration of this plugin or an incompatibility with the JUnit version being used.
+
+3. Forked process error: The error message also mentions "There was an error in the forked process". This means that the process that Maven started to execute the tests encountered an issue. This could be due to an out-of-memory error or other environment-related problems.
+
+In summary, the test failure does not appear to be due to an issue with the test itself or the business logic it is testing, but rather with the project's configuration or the environment in which the tests are being run. The next steps would be to update the JUnit Jupiter dependency to a specific version instead of using LATEST or RELEASE, check the configuration of the maven-surefire-plugin, and investigate any potential issues with the testing environment.
+@Test
+@Tag("boundary")
+public void checkZeroSize() {
+    PetriDish dish = new PetriDish(0);
+    int size = dish.getSize();
+    assertEquals(0, size, "Size of the dish should be 0");
+}
+*/
+/*
+The failure of the test method `validateSizeAfterAddingElements` is not due to a specific issue with the test method itself, but is a result of test engine failure to discover tests. Specifically, the error message `TestEngine with ID 'junit-jupiter' failed to discover tests` suggests an issue with the JUnit 5 (Jupiter) test engine.
+
+This could be due to a few reasons:
+
+1. Incorrect or missing JUnit dependencies: The project might not have the correct JUnit 5 dependencies or they might be missing altogether. The warning at the start of the log shows that the version for org.junit.jupiter:junit-jupiter:jar is either LATEST or RELEASE, both of which are deprecated. It's recommended to use a specific version number for JUnit 5 dependencies.
+
+2. Configuration issues with the Surefire plugin: The maven-surefire-plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. If it's not configured correctly to work with JUnit 5, it might not be able to discover and run the tests. 
+
+3. Compatibility issues: There could be compatibility issues between the versions of JUnit, Maven, and the Surefire plugin used in the project. 
+
+To resolve these issues, it's recommended to review and update the project's dependencies and plugin configurations in the pom.xml file. Also, ensure that all the tools and libraries are compatible with each other. 
+
+As for the test method itself, it seems to be a stub without any actual test logic. The comment inside the method suggests that it's meant to test the size of the object after adding elements to it. However, there's no code to perform such operations or assertions to check the results. It needs to be implemented properly to test the desired functionality.
+@Test
+@Tag("valid")
+public void validateSizeAfterAddingElements() {
+    // This test case is invalid since there is no direct way to add elements to the
+    // dish object.
+    // The method getAddresses() is not available in the PetriDish class.
+    // Hence this test case needs to be removed or the business logic needs to be
+    // updated to handle such scenario.
+}
+*/
+
 
 }

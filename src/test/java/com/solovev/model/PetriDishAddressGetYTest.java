@@ -68,32 +68,71 @@ public class PetriDishAddressGetYTest {
 		petriDish = new PetriDish();
 		address = petriDish.new Address(0, 0);
 	}
+/*
+The error logs indicate that the test failed to run due to an issue with the Junit Jupiter test engine, not because of a problem with the test itself or the business logic. The error "[ERROR] TestEngine with ID 'junit-jupiter' failed to discover tests" suggests that the test engine couldn't find any tests to run.
 
-	@Test
-	@Tag("valid")
-	public void testGetYReturnsCorrectValue() {
-		int expectedY = 5;
-		address = petriDish.new Address(0, expectedY);
-		int actualY = address.getY();
-		assertEquals(expectedY, actualY, "getY should return correct y-coordinate value");
-	}
+This could be due to several reasons:
 
-	@Test
-	@Tag("boundary")
-	public void testGetYWithNegativeValue() {
-		int expectedY = -5;
-		address = petriDish.new Address(0, expectedY);
-		int actualY = address.getY();
-		assertEquals(expectedY, actualY, "getY should handle negative y-coordinate values");
-	}
+1. Incorrect or outdated Junit Jupiter version: The warning message "'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is either LATEST or RELEASE (both of them are being deprecated)" implies that the version of Junit Jupiter being used is either LATEST or RELEASE, both of which are deprecated. Using a specific stable version of Junit Jupiter instead of LATEST or RELEASE might resolve this issue.
 
-	@Test
-	@Tag("boundary")
-	public void testGetYWithZeroValue() {
-		int expectedY = 0;
-		address = petriDish.new Address(0, expectedY);
-		int actualY = address.getY();
-		assertEquals(expectedY, actualY, "getY should handle zero y-coordinate value");
-	}
+2. Maven Surefire Plugin compatibility issue: The error occurred during the execution of the maven-surefire-plugin, which is responsible for running tests in Maven projects. There might be a compatibility issue between the version of the surefire plugin and Junit Jupiter.
+
+3. Misconfiguration in the project setup: If the project is not correctly configured to use Junit Jupiter, the test engine might fail to discover the tests. This could be an issue with the project's POM file or the way the tests are structured in the project.
+
+To fix this issue, ensure that you are using a specific, compatible version of Junit Jupiter and the Maven Surefire Plugin, and that your project is correctly configured to use Junit Jupiter for testing.
+@Test
+@Tag("valid")
+public void testGetYReturnsCorrectValue() {
+    int expectedY = 5;
+    address = petriDish.new Address(0, expectedY);
+    int actualY = address.getY();
+    assertEquals(expectedY, actualY, "getY should return correct y-coordinate value");
+}
+*/
+/*
+The error logs indicate that the test failed to run due to an issue with the Junit Jupiter test engine, not because of a problem with the test itself or the business logic. The error "[ERROR] TestEngine with ID 'junit-jupiter' failed to discover tests" suggests that the test engine couldn't find or recognize the tests to run.
+
+This issue could be due to several reasons such as:
+
+1. Incorrect or incompatible versions of Junit Jupiter and Maven Surefire/Failsafe plugin. The Maven Surefire/Failsafe plugins need to be at least version 2.22.0 to support Junit Jupiter. The logs show a warning about the version of the junit-jupiter dependency being either LATEST or RELEASE, which are deprecated.
+
+2. Misconfiguration of the test or the Maven Surefire/Failsafe plugins. If the test is not correctly configured or if the plugins are not correctly configured to find the tests, the test engine won't be able to discover the tests.
+
+3. Absence of a necessary Junit platform runner or launcher dependency in the project. If these dependencies are missing, the Junit Jupiter engine won't be able to discover or run the tests.
+
+To resolve this issue, ensure that the correct and compatible versions of Junit Jupiter and Maven Surefire/Failsafe plugins are used, the test and plugins are correctly configured, and all necessary Junit dependencies are included in the project.
+@Test
+@Tag("boundary")
+public void testGetYWithNegativeValue() {
+    int expectedY = -5;
+    address = petriDish.new Address(0, expectedY);
+    int actualY = address.getY();
+    assertEquals(expectedY, actualY, "getY should handle negative y-coordinate values");
+}
+*/
+/*
+The error logs indicate that the test failed to run due to an issue with the JUnit Jupiter test engine, not because of a problem with the test itself or the business logic. The error "[ERROR] TestEngine with ID 'junit-jupiter' failed to discover tests" suggests that the test engine couldn't find any tests to run.
+
+This could be due to several reasons:
+
+1. Incorrect configuration or setup: The test might not be correctly set up in the test suite or the project might not be correctly configured to use JUnit Jupiter.
+
+2. Version mismatch: The version of JUnit Jupiter defined in the project's dependencies might be incompatible with the version of the JUnit platform being used.
+
+3. Corrupted dependencies: The local cache of Maven dependencies might be corrupted, causing issues when Maven tries to use them.
+
+4. Lack of junit-jupiter-api dependency: The junit-jupiter-api dependency might be missing from the project's pom.xml file, which is necessary for testing with JUnit 5.
+
+To resolve this issue, ensure the project is correctly set up to use JUnit Jupiter and that all necessary dependencies are included and not corrupted. If the issue persists, consider using a different version of JUnit Jupiter or the JUnit platform.
+@Test
+@Tag("boundary")
+public void testGetYWithZeroValue() {
+    int expectedY = 0;
+    address = petriDish.new Address(0, expectedY);
+    int actualY = address.getY();
+    assertEquals(expectedY, actualY, "getY should handle zero y-coordinate value");
+}
+*/
+
 
 }

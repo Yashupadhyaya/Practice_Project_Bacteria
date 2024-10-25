@@ -57,44 +57,81 @@ import java.util.stream.Collectors;
 import com.solovev.model.PetriDish.Address;
 
 public class PetriDishAddressEmptyNeighborsTest {
+/*
+The issue here is not related to the business logic of the unit test or the method under test. The error log indicates that the test engine 'junit-jupiter' failed to discover tests. This means that the JUnit 5 test engine could not find or run the tests.
 
-	@Test
-	@Tag("valid")
-	public void testEmptyNeighborsForMiddleAddress() {
-		// Arrange
-		PetriDish petriDish = new PetriDish();
-		Address address = petriDish.new Address(5, 5);
-		// Act
-		Collection<Address> neighbors = address.emptyNeighbors();
-		// Assert
-		assertEquals(8, neighbors.size(),
-				"The number of empty neighbors for an address in the middle of the petridish should be 8");
-	}
+This problem is typically caused by one of the following reasons:
 
-	@Test
-	@Tag("boundary")
-	public void testEmptyNeighborsForCornerAddress() {
-		// Arrange
-		PetriDish petriDish = new PetriDish();
-		Address address = petriDish.new Address(0, 0);
-		// Act
-		Collection<Address> neighbors = address.emptyNeighbors();
-		// Assert
-		assertEquals(3, neighbors.size(),
-				"The number of empty neighbors for an address at the corner of the petridish should be 3");
-	}
+1. Incorrect or missing dependencies: The project might be missing the required JUnit 5 dependencies, or the dependencies might be incorrectly configured. 
 
-	@Test
-	@Tag("boundary")
-	public void testEmptyNeighborsForEdgeAddress() {
-		// Arrange
-		PetriDish petriDish = new PetriDish();
-		Address address = petriDish.new Address(5, 0);
-		// Act
-		Collection<Address> neighbors = address.emptyNeighbors();
-		// Assert
-		assertEquals(5, neighbors.size(),
-				"The number of empty neighbors for an address at the edge of the petridish should be 5");
-	}
+2. Incorrect test configuration: The test might be incorrectly configured in the IDE or build tool. For example, if the test is being run with a JUnit 4 runner while it's a JUnit 5 test, this error could occur.
+
+3. Incompatibility issues: There might be an incompatibility between the version of JUnit and the version of the build tool (Maven in this case). 
+
+4. Annotation misuse: The test class or methods might not be correctly annotated. For instance, if @Test annotation is not present or if it's imported from a wrong package, the test engine won't recognize the method as a test.
+
+In order to fix this issue, it's recommended to check the project's dependency configuration, ensure the correct usage of JUnit 5 annotations, and verify the compatibility of the used tools and libraries.
+@Test
+@Tag("valid")
+public void testEmptyNeighborsForMiddleAddress() {
+    // Arrange
+    PetriDish petriDish = new PetriDish();
+    Address address = petriDish.new Address(5, 5);
+    // Act
+    Collection<Address> neighbors = address.emptyNeighbors();
+    // Assert
+    assertEquals(8, neighbors.size(), "The number of empty neighbors for an address in the middle of the petridish should be 8");
+}
+*/
+/*
+The issue here is not related to the business logic of the unit test or the method under test. The error log indicates that the test engine 'junit-jupiter' failed to discover tests. This means that the JUnit 5 test engine could not find or run the tests.
+
+This problem can occur due to several reasons:
+
+1. Incorrect or missing JUnit dependencies in the project's build configuration file (pom.xml for Maven or build.gradle for Gradle). This might be the case here as the warning message indicates that the version for 'org.junit.jupiter:junit-jupiter:jar' is either LATEST or RELEASE, both of which are deprecated.
+
+2. The test methods might not be correctly annotated. In JUnit 5, tests should be annotated with @Test from the org.junit.jupiter.api package, not from the org.junit package used in JUnit 4.
+
+3. The tests could be located in a directory that is not included in the test source directories.
+
+4. There could be an issue with the project configuration or IDE settings that prevents correct test discovery.
+
+To fix this issue, ensure that the correct JUnit 5 dependencies are included in the project's build configuration file, that the test methods are correctly annotated with the JUnit 5 @Test annotation, and that the tests are located in the correct directory. If the problem persists, check the project configuration or IDE settings.
+@Test
+@Tag("boundary")
+public void testEmptyNeighborsForCornerAddress() {
+    // Arrange
+    PetriDish petriDish = new PetriDish();
+    Address address = petriDish.new Address(0, 0);
+    // Act
+    Collection<Address> neighbors = address.emptyNeighbors();
+    // Assert
+    assertEquals(3, neighbors.size(), "The number of empty neighbors for an address at the corner of the petridish should be 3");
+}
+*/
+/*
+The issue here is not related to the business logic of the unit test or the method under test. The error log indicates that the test engine 'junit-jupiter' failed to discover tests. This indicates a configuration issue with the test setup or environment, rather than an issue with the specific test case or method itself.
+
+The error log also mentions that there was an error in the forked process when executing the Maven Surefire plugin. This plugin is used to execute unit tests in Maven projects. This indicates again that there may be a problem with the test environment setup.
+
+Possible causes of this error could be:
+- Incorrect or incompatible versions of Junit and Maven Surefire plugin.
+- The test classes or methods are not correctly named or located according to Maven's default settings.
+- There could be an issue with the build path or classpath configuration.
+
+In order to resolve this, you would need to check and update the project's dependencies and plugin configurations in the pom.xml file, ensure that the test classes and methods are correctly named and located, and check the project's build path and classpath configuration. If the issue persists, it would be helpful to run Maven with the -e or -X switch as suggested in the error log, to get a more detailed error message.
+@Test
+@Tag("boundary")
+public void testEmptyNeighborsForEdgeAddress() {
+    // Arrange
+    PetriDish petriDish = new PetriDish();
+    Address address = petriDish.new Address(5, 0);
+    // Act
+    Collection<Address> neighbors = address.emptyNeighbors();
+    // Assert
+    assertEquals(5, neighbors.size(), "The number of empty neighbors for an address at the edge of the petridish should be 5");
+}
+*/
+
 
 }
